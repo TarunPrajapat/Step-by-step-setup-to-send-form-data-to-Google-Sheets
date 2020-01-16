@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Order Details</title>
+<link rel="stylesheet" href="bootstrap.min.css">
+<script src="bootstrap.min.js"></script>
+<script src="jquery-1.12.4.js"></script>
+</head>
+<body>
+<table>
+	<form id='insert_form'>
+	<div class="row">
+	   <div class="col-md-13">
+	        <div class="panel-heading"><h2 align="center">Order Details</h2></div>
+			 <tr>
+					   <th >Invoice no.</th>
+	              <th >US</th>
+	              <th>AUD</th>
+	               <th >UK</th>
+	               <th >Order No.</th>
+                  <th>Title[item]</th>
+                 <th>Buyer's name</th>
+	               <th>Country</th>
+	               <th>Track</th>
+	               <th>Shipped</th>
+	                <th>IndiaPost</th>
+	                <th>In Transit</th>
+	                 <th>Delivered</th>
+					</tr>
+					<tr>
+					<td><input type="text" class="form-control input-sm " name="Invoice No." id="Serial" ></td>
+					<td><input type="text" class="form-control input-sm " name="US" id="US" ></td>
+					<td><input type="text" class="form-control input-sm " name="Aud" id="Aud" ></td>
+					<td> <input type="text" class="form-control input-sm " name="UK" id="UK" ></td>
+					<td><input type="text" class="form-control input-sm " name="Order No." id="Order" > </td>
+					<td><input type="text" class="form-control input-sm "  name="Title" id="Title" ></td>
+					<td><input type="text" class="form-control input-sm"  name="Buyer" id="Buyer" ></td>
+					<td><input type="text" class="form-control input-sm"  name="Country" id="Country" ></td>
+					<td><input type="text" class="form-control input-sm " name="Track" id="Track"></td>
+					<td><input type="text" class="form-control input-sm " name="Shipped" id="Shipped"   ></td>
+					<td><input type="text" class="form-control input-sm " name="IndiaPost" id="IndiaPost"></td>
+					<td><input type="text" class="form-control input-sm " name="InTransit" id="InTransit" ></td>
+					<td><input type="text" class="form-control input-sm "  name="Delivered" id="Delivered"></td>
+					</tr>
+	   </div>
+	</div>
+	</table>
+	<br>
+	<div class="container">
+	  <div class="row">
+	  <div class="col-md-12">
+	   <button type="submit" name="submit" id="submit-form" class="btn btn-info">Send</button>
+	  <input type="text" id="add" value="Add Data" class="btn btn-primary btn-sm" readonly>
+	  </div>
+	  </div>
+	</div>
+	</div>
+		</form>
+	<style type="text/css">
+th
+{
+padding:0 5px 0 5px; 
+}
+td
+{
+    padding:0 5px 0 5px;
+}
+</style>
+
+	<hr>
+<div class="container">
+ <div class="row">
+   <div class="col-md-12">
+	      <div class="panel-body">
+		        <table class="table table-hover table-striped table-bordered" id="data_table" >
+				    <thead>
+					 <tr>
+					   <th >Invoice no.</th>
+	              <th >US</th>
+	              <th>AUD</th>
+	               <th >UK</th>
+	               <th >Order No.</th>
+                  <th>Title[item]</th>
+                 <th>Buyer's name</th>
+	               <th>Country</th>
+	               <th>Track</th>
+	               <th>Shipped</th>
+	                <th>IndiaPost</th>
+	                <th>In Transit</th>
+	                 <th>Delivered</th>
+					</tr>
+					</thead>
+					<tbody>
+				
+					</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	
+    <hr>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <!-- Custom Theme JavaScript -->
+  <script src='google-sheet.js'></script>
+	<script type="text/javascript">
+	$(function(){
+		
+		var set_number =function(row)
+		{
+		     var iNum = parseInt(row)+1;
+			var table_len=$('#data_table tbody tr').length+1;
+			$('#Serial').val(iNum);
+		}
+		
+		
+		
+		$('#add').click(function()
+		{
+		var row=$('#Serial').val();
+			var Serial=$('#Serial').val();
+			var US=$('#US').val();
+			var Aud=$('#Aud').val();
+			var UK=$('#UK').val();
+			var Order=$('#Order').val();
+			var Title=$('#Title').val();
+			var Buyer=$('#Buyer').val();
+			var Country=$('#Country').val();
+			var Track=$('#Track').val();
+			var Shipped=$('#Shipped').val();
+			var IndiaPost=$('#IndiaPost').val();
+			var InTransit=$('#InTransit').val();
+			var Delivered=$('#Delivered').val();
+			
+			
+			$('#data_table tbody:last-child').append(
+		
+		'<tr>'+
+			'<td>'+Serial+'</td>'+
+			'<td>'+US+'</td>'+
+			'<td>'+Aud+'</td>'+
+			'<td>'+UK+'</td>'+
+			'<td>'+Order+'</td>'+
+			'<td>'+Title+'</td>'+
+			'<td>'+Buyer+'</td>'+
+			'<td>'+Country+'</td>'+
+			'<td>'+Track+'</td>'+
+			'<td>'+Shipped+'</td>'+
+			'<td>'+IndiaPost+'</td>'+
+			'<td>'+InTransit+'</td>'+
+			'<td>'+Delivered+'</td>'+
+			'</tr>'
+			);
+			
+			$('#Serial').val('');
+			$('#US').val('');
+			$('#Aud').val('');
+			$('#UK').val('');
+			$('#Order').val('');
+			$('#Title').val('');
+			$('#Buyer').val('');
+			$('#Country').val('');
+			$('#Track').val('');
+			$('#Shipped').val('');
+			$('#IndiaPost').val('');
+			$('#InTransit').val('');
+			$('#Delivered').val('');
+			
+			set_number(row);
+			
+		});
+	});
+	</script>
+		</body>
+</html>
